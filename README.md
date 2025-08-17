@@ -1,0 +1,2 @@
+# mixxxcontrollermapping
+Mixxx Controller Mappings
