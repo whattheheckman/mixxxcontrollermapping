@@ -1,40 +1,21 @@
 # Mixxx: Pioneer DDJ REV1 mapping
 
-## Documents
+## To Use it:
 
-- [Manufacturer’s product page](https://www.pioneerdj.com/en/product/controller/ddj-rev1/black/overview)
-- [Manual](https://www.pioneerdj.com/en/support/documents/ddj-rev1)
-- [Midi commands](https://www.pioneerdj.com/-/media/pioneerdj/software-info/controller/ddj-rev1/ddj-rev1_midi_message_list_e1.pdf)
-- [Forum thread ](https://mixxx.discourse.group/t/)
+Copy the `Pioneer-DDJ-REV1-script.js` and `Pioneer DDJ-REV1.midi.xml` files into your User Mapping folder. 
 
-## Requirements
+### Windows
+    %LOCALAPPDATA%\Mixxx
+### macOS
+    Mixxx 2.3: ~/Library/Containers/org.mixxx.mixxx/Data/Library/Application Support/Mixxx
+    Mixxx 2.2 and earlier: ~/Library/Application Support/Mixxx
+### Linux
+    ~/.mixxx/
+    This resolves to /home/<your-username>/.mixxx
+    
+    
+Restart Mixxx and load the mapping.
 
-Mixxx 2.6+
+**For more infomration follow the** [official Mixxx guide](https://manual.mixxx.org/2.3/en/chapters/controlling_mixxx.html#installing-a-mapping-from-the-forum).
 
-## Firmware & Drivers
-
-Firmware: At the time this manual was written there are no firmware updates available for Pioneer DDJ-REV1. However always check Pioneer Dj website for any firmware updates.
-
-Drivers: No drivers are required for the Pioneer DDJ-REV1 to operate. The device is a USB class compliant and your Operating System will auto-install the necessary drivers when connected with a USB cable.
-
-## Compatibility
-
-This controller is a class compliant USB MIDI and audio device, so it can be used without any special drivers on GNU/Linux, Mac OS X, and Windows. However, if you wish to use the ASIO sound API under Windows, please install the latest driver package available.
-
-Sound card setup
-----------------
-
-This controller has a built-in 4 channel sound card, with MASTER output. MIC input terminal 1/4” TR jack. MASTER output terminal RCA pin jacks. Headphones output terminals 3.5 mm stereo.
-
-| Output Channels | Assign to   |
-|-----------------|-------------|
-| 1-2             | Main        |
-| 3-4             | Headphones  |
-
-
-| Input Channels | Assign to    |
-|----------------|--------------|
-| 1-2 (Input 1)  | Microphone 1 |
-
-
-
+-------------
