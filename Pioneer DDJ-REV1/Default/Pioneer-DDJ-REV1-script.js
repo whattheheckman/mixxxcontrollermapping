@@ -40,7 +40,7 @@
 // * Authors: Warker, nschloe, dj3730, jusko, tiesjan, Alexandr, 0b1, AKOI
 // * Reviewers: Be-ing, Holzhaus
 // * Manual: https://www.pioneerdj.com/en/support/documents/ddj-rev1/
-// * Forum: https://mixxx.discourse.group/t/pioneer-ddj-rev1-mapping/27062/15
+// * Forum: https://mixxx.discourse.group/t/pioneer-ddj-rev1-mapping-update-2-6/32603/5
 // * MIDI: https://www.pioneerdj.com/-/media/pioneerdj/software-info/controller/ddj-rev1/ddj-rev1_midi_message_list_e1.pdf
 // * User Guide: https://manual.mixxx.org/2.6/en/hardware/controllers/pioneer_ddj_rev1
 // ****************************************************************************
