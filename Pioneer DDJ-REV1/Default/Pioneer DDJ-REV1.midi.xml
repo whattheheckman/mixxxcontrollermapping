@@ -2,9 +2,9 @@
 <MixxxControllerPreset mixxxVersion="2.6" schemaVersion="1">
     <info>
         <name>Pioneer DDJ-REV1</name>
-        <author>alexandr, Warker, nschloe, dj3730, jusko, tiesjan, 0b1, AKOI </author>
+        <author>alexandr, Warker, nschloe, dj3730, jusko, tiesjan, mjlyon, 0b1, AKOI </author>
         <description>Midi Mapping for the Pioneer DDJ-REV1</description>
-        <forums>https://mixxx.discourse.group/t/pioneer-ddj-rev1-mapping/27062</forums>
+        <forums>https://mixxx.discourse.group/t/pioneer-ddj-rev1-mapping-update-2-6/32603</forums>
     </info>
     <controller id="DDJ-REV1">
         <scriptfiles>
@@ -2443,16 +2443,6 @@
                 <midino>0x33</midino>
                 <options>
                     <fourteen-bit-lsb/>
-                </options>
-            </control>
-            <control>
-                <group>[Sampler9]</group>
-                <key>PioneerDDJREV1.loadScratchToDeck  </key>
-                <description>SCRATCH BANK - PAD 5 (LEFT) - press - Load Sample 9 (Deck 1)</description>
-                <status>0x97</status>
-                <midino>0x34</midino>
-                <options>
-                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -5633,4 +5623,3 @@
         </outputs>
     </controller>
 </MixxxControllerPreset>
-
