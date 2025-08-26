@@ -1000,26 +1000,25 @@ PioneerDDJREV1.loadSelectedTrack = function (_channel, _control, value, _status,
     //Load or Unload STEMS
     let stemCount = engine.getValue(group, "stem_count"); //Get Stem count
     const baseNote = 0x70; // Starting MIDI note for stems
-    const groupPrefix = "[QuickEffectRack1_" + "[Channel" + script.deckFromGroup(group) + "_Stem"; //Stems Effects Channel
-    const stemMuteGroupPrefix = "[Channel" + script.deckFromGroup(group) + "_Stem";               //Stems Channel
+    const deckNumber = script.deckFromGroup(group);
+    const groupPrefix = `[QuickEffectRack1_[Channel${deckNumber}_Stem`; //Stems Effects Channel
+    const stemMuteGroupPrefix = `[Channel${deckNumber}_Stem`;               //Stems Channel
 
     for (let i = 1; i <= 4; i++) {
         const stemEffectGroup = `${groupPrefix}${i}]]`;
         const stemMuteGroup = `${stemMuteGroupPrefix}${i}]`;
 
-        for (let n = 1; n <= 8; n++) {
-            const note = baseNote + (8 - n); // Calculate MIDI note for each stem    
-            if (stemCount > 0) {
-                midi.sendShortMsg(0x97, note, 0x7F); // Note on
-                //Sync Mixx Lights
-                engine.setValue(stemEffectGroup, "enabled", 1);
-                engine.setValue(stemMuteGroup, "mute", 0);
-            } else {
-                midi.sendShortMsg(0x97, note, 0x00); // Note off
-                //Sync Mixx Lights
-                engine.setValue(stemEffectGroup, "enabled", 0);
-                engine.setValue(stemMuteGroup, "mute", 1);
-            }
+        const note = baseNote + (4 - i); // Calculate MIDI note for each stem (assuming 4 stems)
+        
+        if (stemCount >= i) { // Check if the current stem exists
+            midi.sendShortMsg(0x97, note, 0x7F); // Note on
+            //Sync Mixx Lights
+            engine.setValue(stemMuteGroup, "mute", 0);
+        } else {
+            midi.sendShortMsg(0x97, note, 0x00); // Note off
+            //Sync Mixx Lights
+            engine.setValue(stemEffectGroup, "enabled", 0);
+            engine.setValue(stemMuteGroup, "mute", 1);
         }
     }
 };
@@ -1340,7 +1339,11 @@ PioneerDDJREV1.deckMappings = {
     7: "[Channel1]",
     9: "[Channel2]",
     11: "[Channel3]",
-    13: "[Channel4]"
+    13: "[Channel4]",
+    8: "[Channel1]",
+    10: "[Channel2]",
+    12: "[Channel3]",
+    11: "[Channel4]"
 };
 
 PioneerDDJREV1.samplerMappings = {
@@ -1352,9 +1355,13 @@ PioneerDDJREV1.samplerMappings = {
 
 // Main function to load scratch samples to decks
 PioneerDDJREV1.loadScratchToDeck = function (channel, control, value, status, group) {
-    if (!value){
-         return;
-         }
+    if (!PioneerDDJREV1.scratchBankEnabled) {
+        return;
+    }
+
+    if (!value) {
+        return;
+    }
 
     // Get deck number
     var deckNumber = PioneerDDJREV1.deckMappings[channel] || "[Channel1]";
@@ -1364,19 +1371,32 @@ PioneerDDJREV1.loadScratchToDeck = function (channel, control, value, status, gr
     var midiChannel = channelMapping.midiChannel;
     var samplerNumber = (channelMapping.samples && channelMapping.samples[control]) || 1;
 
+    // Check if deck loaded
+    var deckLoaded = engine.getValue(deckNumber, "play");
+    if (deckLoaded) {
+        console.warn("Deck loaded. Unload deck to load scratch sample " + deckNumber);
+        return;
+    }
+
     // Handle deck selection lighting logic for buttons 0x34-0x37
     if (control >= 0x34 && control <= 0x37) {
         // Turn off all lights for this channel first
         for (var i = 0x34; i <= 0x37; i++) {
             midi.sendShortMsg(midiChannel, i, 0x00);
         }
+
+        // Calculate the correct sampler group based on samplerNumber
+        var samplerGroup = "[Sampler" + samplerNumber + "]";
+
+        // Check if a sample is loaded in the corresponding sampler
+        var sampleLoaded = engine.getValue(samplerGroup, "track_loaded");
+        if (!sampleLoaded) {
+            console.warn("No sample loaded in Sampler" + samplerNumber);
+            return;
+        }
+
         // Load sample to deck
         try {
-            var sampler = engine.getValue(group, "track_loaded");
-            if (!sampler) {
-                console.warn("No sample loaded in Sampler" + samplerNumber);
-                return;
-            }
             // Set new selection and light up the button
             midi.sendShortMsg(midiChannel, control, 0x7F);
 
@@ -1385,23 +1405,11 @@ PioneerDDJREV1.loadScratchToDeck = function (channel, control, value, status, gr
         } catch (error) {
             console.error("Error loading sample to deck:", error);
         }
-
     }
-
-
 };
 
-/* 
-// Function to load sample and play immediately                                          -------------Unsed add to Shift if open
-this.loadAndPlaySample = function (sampleNumber, deckNumber) {
-    if (loadSampleToDeck(sampleNumber, deckNumber)) {
-        // Trigger play after loading
-        engine.setValue("[Channel" + deckNumber + "]", "play", 1);
-        return true;
-    }
-    return false;
-}
- */
+
+
 /////////////////////////////////////////////////
 // Shutdown
 /////////////////////////////////////////////////
