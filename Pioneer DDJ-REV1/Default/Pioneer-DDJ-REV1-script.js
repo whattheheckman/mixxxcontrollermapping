@@ -367,6 +367,8 @@ PioneerDDJREV1.beatLoopRollSizes = [
     engine.getSetting("beatLoopRollsSize8") || "double"
 ];
 
+PioneerDDJREV1.beatLoopPadStates = [false, false, false, false, false, false, false, false];
+
 PioneerDDJREV1.quickJumpSize = 32;
 
 
@@ -613,17 +615,39 @@ PioneerDDJREV1.loopToggle = function (_channel, control, value, _status, group) 
 /*                                  Beat loop                                 */
 /* -------------------------------------------------------------------------- */
 
+// TODO: Add midi out for lighting (don't use connections because we don't want lighting everytime the loop is active)
 PioneerDDJREV1.beatLoopRoll = function (_channel, control, value, _status, group) {
     pressedBeatLoopPad = control - 0x50; //  This gets the index using the control number and subtracting the starting control number.
     //  This works because all channel's pads start with the same control number.
     pressedBeatLoopRollSize = PioneerDDJREV1.beatLoopRollSizes[pressedBeatLoopPad];
 
-    if (pressedBeatLoopRollSize == "half") { // we don't check for value here to stop beat loop from disabling when we let go of halve buttons
+    if (value && !engine.getValue(group, "beatlooproll_activate")) { //incoming button was pressed and beatloop is active
+        engine.setParameter(group, "beatloop_size", pressedBeatLoopRollSize);
+        engine.setValue(group, "beatlooproll_activate", true);
+    } else if(value) {// a button is pressed but we are already doing a beat roll
+        engine.setValue(group, "beatloop_size", pressedBeatLoopRollSize); // change the size
+    } 
+    else if (!value && (pressedBeatLoopRollSize == engine.getValue(group, "beatloop_size"))){ 
+        // if a button was released and it's the same as the current beat roll
+        engine.setValue(group, "beatlooproll_activate", false); // turn off beat roll
+    }
+};
+
+/* -------------------------------------------------------------------------- */
+/*                                  Beat jump                                 */
+/* -------------------------------------------------------------------------- */
+
+PioneerDDJREV1.beatJump = function (_channel, control, value, _status, group) {
+    pressedBeatJumpPad = control - 0x40; //  This gets the index using the control number and subtracting the starting control number.
+    //  This works because all channel's pads start with the same control number.
+    pressedBeatJumpActionSize = PioneerDDJREV1.beatJumpActions[pressedBeatLoopPad];
+
+    if (pressedBeatJumpActionSize == "half") { // we don't check for value here to stop beat loop from disabling when we let go of halve buttons
         if (value) {
             engine.setValue(group, "beatloop_size", (engine.getValue(group, "beatloop_size") * 0.5));
         }
 
-    } else if (pressedBeatLoopRollSize == "double") {
+    } else if (pressedBeatJumpActionSize == "double") {
         if (value) {
             engine.setValue(group, "beatloop_size", (engine.getValue(group, "beatloop_size") * 2));
         }

@@ -39,8 +39,6 @@
                     <value label="2">2</value>
                     <value label="4">4</value>
                     <value label="8">8</value>
-                    <value label="Halve beatloop size">half</value>
-                    <value label="Double beatloop size">double</value>
                     <description>The top left or pad button.</description>
                 </option>
                 <option variable="beatLoopRollsSize2" type="enum" label="Second Pad">
@@ -53,8 +51,6 @@
                     <value label="2">2</value>
                     <value label="4">4</value>
                     <value label="8">8</value>
-                    <value label="Halve beatloop size">half</value>
-                    <value label="Double beatloop size">double</value>
                     <description>The top left second pad button.</description>
                 </option>
                 <option variable="beatLoopRollsSize3" type="enum" label="Third Pad">
@@ -67,8 +63,6 @@
                     <value label="2">2</value>
                     <value label="4">4</value>
                     <value label="8">8</value>
-                    <value label="Halve beatloop size">half</value>
-                    <value label="Double beatloop size">double</value>
                     <description>The top right second pad button.</description>
                 </option>
                 <option variable="beatLoopRollsSize4" type="enum" label="Fourth Pad">
@@ -81,8 +75,6 @@
                     <value label="2">2</value>
                     <value label="4">4</value>
                     <value label="8">8</value>
-                    <value label="Halve beatloop size">half</value>
-                    <value label="Double beatloop size">double</value>
                     <description>The top right pad button.</description>
                 </option>
             </row>
@@ -97,8 +89,6 @@
                     <value label="2">2</value>
                     <value label="4">4</value>
                     <value label="8">8</value>
-                    <value label="Halve beatloop size">half</value>
-                    <value label="Double beatloop size">double</value>
                     <description>The bottom left pad button.</description>
                 </option>
                 <option variable="beatLoopRollsSize6" type="enum" label="Sixth Pad">
@@ -111,8 +101,6 @@
                     <value label="2" default="true">2</value>
                     <value label="4">4</value>
                     <value label="8">8</value>
-                    <value label="Halve beatloop size">half</value>
-                    <value label="Double beatloop size">double</value>
                     <description>The bottom left second pad button.</description>
                 </option>
                 <option variable="beatLoopRollsSize7" type="enum" label="Seventh Pad">
@@ -125,8 +113,6 @@
                     <value label="2">2</value>
                     <value label="4">4</value>
                     <value label="8">8</value>
-                    <value label="Halve beatloop size" default="true">half</value>
-                    <value label="Double beatloop size">double</value>
                     <description>The bottom right second pad button.</description>
                 </option>
                 <option variable="beatLoopRollsSize8" type="enum" label="Eighth Pad">
@@ -139,8 +125,6 @@
                     <value label="2">2</value>
                     <value label="4">4</value>
                     <value label="8">8</value>
-                    <value label="Halve beatloop size">half</value>
-                    <value label="Double beatloop size" default="true">double</value>
                     <description>The bottom right pad button.</description>
                 </option>
             </row>
