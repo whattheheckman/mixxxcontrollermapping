@@ -3214,6 +3214,7 @@
                     <normal/>
                 </options>
             </control>
+            <!-- Beat Loop roll pads -->
             <control>
                 <group>[Channel1]</group>
                 <key>PioneerDDJREV1.beatLoopRoll</key>
@@ -3250,6 +3251,128 @@
                 <description>ROLL 1/4 (DECK4) - press - Toggle 1/4 beat roll</description>
                 <status>0x9D</status>
                 <midino>0x50</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>PioneerDDJREV1.beatLoopRoll</key>
+                <description>ROLL 1/2 (DECK1) - press - Toggle 1/2 beat roll</description>
+                <status>0x97</status>
+                <midino>0x51</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>PioneerDDJREV1.beatLoopRoll</key>
+                <description>ROLL 1/2 (DECK2) - press - Toggle 1/2 beat roll</description>
+                <status>0x99</status>
+                <midino>0x51</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>PioneerDDJREV1.beatLoopRoll</key>
+                <description>ROLL 1/2 (DECK3) - press - Toggle 1/2 beat roll</description>
+                <status>0x9B</status>
+                <midino>0x51</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>PioneerDDJREV1.beatLoopRoll</key>
+                <description>ROLL 1/2 (DECK4) - press - Toggle 1/2 beat roll</description>
+                <status>0x9D</status>
+                <midino>0x51</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            
+            <control>
+                <group>[Channel1]</group>
+                <key>PioneerDDJREV1.beatLoopRoll</key>
+                <description>ROLL 1 (DECK1) - press - Toggle 1 beat roll</description>
+                <status>0x97</status>
+                <midino>0x52</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>PioneerDDJREV1.beatLoopRoll</key>
+                <description>ROLL 1 (DECK2) - press - Toggle 1 beat roll</description>
+                <status>0x99</status>
+                <midino>0x52</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>PioneerDDJREV1.beatLoopRoll</key>
+                <description>ROLL 1 (DECK3) - press - Toggle 1 beat roll</description>
+                <status>0x9B</status>
+                <midino>0x52</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>PioneerDDJREV1.beatLoopRoll</key>
+                <description>ROLL 1 (DECK4) - press - Toggle 1 beat roll</description>
+                <status>0x9D</status>
+                <midino>0x52</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            
+            <control>
+                <group>[Channel1]</group>
+                <key>PioneerDDJREV1.beatLoopRoll</key>
+                <description>ROLL 2 (DECK1) - press - Toggle 2 beat roll</description>
+                <status>0x97</status>
+                <midino>0x53</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>PioneerDDJREV1.beatLoopRoll</key>
+                <description>ROLL 2 (DECK2) - press - Toggle 2 beat roll</description>
+                <status>0x99</status>
+                <midino>0x53</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>PioneerDDJREV1.beatLoopRoll</key>
+                <description>ROLL 2 (DECK3) - press - Toggle 2 beat roll</description>
+                <status>0x9B</status>
+                <midino>0x53</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>PioneerDDJREV1.beatLoopRoll</key>
+                <description>ROLL 2 (DECK4) - press - Toggle 2 beat roll</description>
+                <status>0x9D</status>
+                <midino>0x53</midino>
                 <options>
                     <script-binding/>
                 </options>
@@ -3299,46 +3422,6 @@
                 <key>PioneerDDJREV1.crossFaderStart</key>
                 <description>SHIFT+CROSSFADER (DECK4) - SYNC message only for fader start</description>
                 <status>0x93</status>
-                <midino>0x51</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>PioneerDDJREV1.beatLoopRoll</key>
-                <description>ROLL 1/2 (DECK1) - press - Toggle 1/2 beat roll</description>
-                <status>0x97</status>
-                <midino>0x51</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>PioneerDDJREV1.beatLoopRoll</key>
-                <description>ROLL 1/2 (DECK2) - press - Toggle 1/2 beat roll</description>
-                <status>0x99</status>
-                <midino>0x51</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel3]</group>
-                <key>PioneerDDJREV1.beatLoopRoll</key>
-                <description>ROLL 1/2 (DECK3) - press - Toggle 1/2 beat roll</description>
-                <status>0x9B</status>
-                <midino>0x51</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel4]</group>
-                <key>PioneerDDJREV1.beatLoopRoll</key>
-                <description>ROLL 1/2 (DECK4) - press - Toggle 1/2 beat roll</description>
-                <status>0x9D</status>
                 <midino>0x51</midino>
                 <options>
                     <script-binding/>
@@ -3395,91 +3478,11 @@
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>PioneerDDJREV1.beatLoopRoll</key>
-                <description>ROLL 1 (DECK1) - press - Toggle 1 beat roll</description>
-                <status>0x97</status>
-                <midino>0x52</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>PioneerDDJREV1.beatLoopRoll</key>
-                <description>ROLL 1 (DECK2) - press - Toggle 1 beat roll</description>
-                <status>0x99</status>
-                <midino>0x52</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel3]</group>
-                <key>PioneerDDJREV1.beatLoopRoll</key>
-                <description>ROLL 1 (DECK3) - press - Toggle 1 beat roll</description>
-                <status>0x9B</status>
-                <midino>0x52</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel4]</group>
-                <key>PioneerDDJREV1.beatLoopRoll</key>
-                <description>ROLL 1 (DECK4) - press - Toggle 1 beat roll</description>
-                <status>0x9D</status>
-                <midino>0x52</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
                 <group>[EffectRack1_EffectUnit1_Effect3]</group>
                 <key>PioneerDDJREV1.selector</key>
                 <description>FX3 + SELECTOR - press (CHANNEL 1) - Cycle to the next Effect</description>
                 <status>0xB4</status>
                 <midino>0x52</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>PioneerDDJREV1.beatLoopRoll</key>
-                <description>ROLL 2 (DECK1) - press - Toggle 2 beat roll</description>
-                <status>0x97</status>
-                <midino>0x53</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>PioneerDDJREV1.beatLoopRoll</key>
-                <description>ROLL 2 (DECK2) - press - Toggle 2 beat roll</description>
-                <status>0x99</status>
-                <midino>0x53</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel3]</group>
-                <key>PioneerDDJREV1.beatLoopRoll</key>
-                <description>ROLL 2 (DECK3) - press - Toggle 2 beat roll</description>
-                <status>0x9B</status>
-                <midino>0x53</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel4]</group>
-                <key>PioneerDDJREV1.beatLoopRoll</key>
-                <description>ROLL 2 (DECK4) - press - Toggle 2 beat roll</description>
-                <status>0x9D</status>
-                <midino>0x53</midino>
                 <options>
                     <script-binding/>
                 </options>
