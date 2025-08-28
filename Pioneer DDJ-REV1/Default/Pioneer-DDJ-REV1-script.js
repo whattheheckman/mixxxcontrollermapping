@@ -353,7 +353,7 @@ PioneerDDJREV1.beatjumpSizeForPad = {
     0x27: 8   // PAD 8
 };
 
-PioneerDDJREV1.beatLoopRolls = [
+PioneerDDJREV1.beatLoopRollSizes = [
     engine.getSetting("beatLoopRollsSize1") || 1/8,
     engine.getSetting("beatLoopRollsSize2") || 1/4,
     engine.getSetting("beatLoopRollsSize3") || 1/2,
@@ -605,6 +605,25 @@ PioneerDDJREV1.loopToggle = function (_channel, control, value, _status, group) 
         PioneerDDJREV1.loopAdjustOut[channel] = false;
     }
 };
+
+/* -------------------------------------------------------------------------- */
+/*                                  Beat loop                                 */
+/* -------------------------------------------------------------------------- */
+
+PioneerDDJREV1.beatLoopRoll = function (_channel, control, value, _status, group) {
+    if (value){
+        pad_offset = 0x50; // this way i don't have to do a switch case and can just parse the beatloop array
+        
+        engine.setParameter(group, "beatloop_size", PioneerDDJREV1.beatLoopRollSizes[(control - pad_offset)]);
+        engine.setValue(group, "beatlooproll_activate", true);
+    } else {
+        engine.setValue(group, "beatlooproll_activate", false);
+        //turn off beatloop roll
+        //reset beat loop size?
+    }
+};
+
+
 //////////////////////////////////////////////////////////////////////
 //Effects Buffering
 /////////////////////////////////////////////////////////////////////////
