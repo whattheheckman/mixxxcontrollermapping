@@ -353,6 +353,17 @@ PioneerDDJREV1.beatjumpSizeForPad = {
     0x27: 8   // PAD 8
 };
 
+PioneerDDJREV1.beatLoopRolls = [
+    engine.getSetting("beatLoopRollsSize1") || 1/8,
+    engine.getSetting("beatLoopRollsSize2") || 1/4,
+    engine.getSetting("beatLoopRollsSize3") || 1/2,
+    engine.getSetting("beatLoopRollsSize4") || 1,
+    engine.getSetting("beatLoopRollsSize5") || 2,
+    engine.getSetting("beatLoopRollsSize6") || 4,
+    engine.getSetting("beatLoopRollsSize7") || "half",
+    engine.getSetting("beatLoopRollsSize8") || "double"
+];
+
 PioneerDDJREV1.quickJumpSize = 32;
 
 

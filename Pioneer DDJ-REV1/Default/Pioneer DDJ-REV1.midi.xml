@@ -6,6 +6,146 @@
         <description>Midi Mapping for the Pioneer DDJ-REV1</description>
         <forums>https://mixxx.discourse.group/t/pioneer-ddj-rev1-mapping-update-2-6/32603</forums>
     </info>
+    <settings>
+        <group label="Platter Settings">
+            <option variable="vinylSlipButton" type="boolean" default="false"
+                label=":hwbtn:`VINYL` enables slip mode">
+                <description> If enabled, :hwbtn:`VINYL`button toggles slip mode instead of CDJ
+                    mode. </description>
+            </option>
+        </group>
+        <group label="Sampler Settings">
+            <option variable="tempSamplerSkin" type="boolean" default="false"
+                label="Show Sampler Skin">
+                <description>If enabled, the sampler skin is shown while adjusting sampler volume.</description>
+            </option>
+        </group>
+        <group label="Jogwheel Settings">
+            <option variable="sZoom" type="boolean" default="false" label="Waveform Zoom">
+                <description>If enabled, vinyl pitch bend controls waveform zoom. CDJ mode remains
+                    unchanged.</description>
+            </option>
+        </group>
+
+        <group label="Beatloop Roll Size">
+            <row orientation="vertical">
+                <option variable="beatLoopRollsSize1" type="enum" label="First Pad">
+                    <value label="1/32">0.03125</value>
+                    <value label="1/16" default="true">0.0625</value>
+                    <value label="1/8">0.125</value>
+                    <value label="1/4">0.25</value>
+                    <value label="1/2">0.5</value>
+                    <value label="1">1</value>
+                    <value label="2">2</value>
+                    <value label="4">4</value>
+                    <value label="8">8</value>
+                    <value label="Halve beatloop size">half</value>
+                    <value label="Double beatloop size">double</value>
+                    <description>The top left or pad button.</description>
+                </option>
+                <option variable="beatLoopRollsSize2" type="enum" label="Second Pad">
+                    <value label="1/32">0.03125</value>
+                    <value label="1/16">0.0625</value>
+                    <value label="1/8" default="true">0.125</value>
+                    <value label="1/4">0.25</value>
+                    <value label="1/2">0.5</value>
+                    <value label="1">1</value>
+                    <value label="2">2</value>
+                    <value label="4">4</value>
+                    <value label="8">8</value>
+                    <value label="Halve beatloop size">half</value>
+                    <value label="Double beatloop size">double</value>
+                    <description>The top left second pad button.</description>
+                </option>
+                <option variable="beatLoopRollsSize3" type="enum" label="Third Pad">
+                    <value label="1/32">0.03125</value>
+                    <value label="1/16">0.0625</value>
+                    <value label="1/8">0.125</value>
+                    <value label="1/4" default="true">0.25</value>
+                    <value label="1/2">0.5</value>
+                    <value label="1">1</value>
+                    <value label="2">2</value>
+                    <value label="4">4</value>
+                    <value label="8">8</value>
+                    <value label="Halve beatloop size">half</value>
+                    <value label="Double beatloop size">double</value>
+                    <description>The top right second pad button.</description>
+                </option>
+                <option variable="beatLoopRollsSize4" type="enum" label="Fourth Pad">
+                    <value label="1/32">0.03125</value>
+                    <value label="1/16">0.0625</value>
+                    <value label="1/8">0.125</value>
+                    <value label="1/4">0.25</value>
+                    <value label="1/2" default="true">0.5</value>
+                    <value label="1">1</value>
+                    <value label="2">2</value>
+                    <value label="4">4</value>
+                    <value label="8">8</value>
+                    <value label="Halve beatloop size">half</value>
+                    <value label="Double beatloop size">double</value>
+                    <description>The top right pad button.</description>
+                </option>
+            </row>
+            <row orientation="vertical">
+                <option variable="beatLoopRollsSize5" type="enum" label="Fifth Pad">
+                    <value label="1/32">0.03125</value>
+                    <value label="1/16">0.0625</value>
+                    <value label="1/8">0.125</value>
+                    <value label="1/4">0.25</value>
+                    <value label="1/2">0.5</value>
+                    <value label="1" default="true">1</value>
+                    <value label="2">2</value>
+                    <value label="4">4</value>
+                    <value label="8">8</value>
+                    <value label="Halve beatloop size">half</value>
+                    <value label="Double beatloop size">double</value>
+                    <description>The bottom left pad button.</description>
+                </option>
+                <option variable="beatLoopRollsSize6" type="enum" label="Sixth Pad">
+                    <value label="1/32">0.03125</value>
+                    <value label="1/16">0.0625</value>
+                    <value label="1/8">0.125</value>
+                    <value label="1/4">0.25</value>
+                    <value label="1/2">0.5</value>
+                    <value label="1">1</value>
+                    <value label="2" default="true">2</value>
+                    <value label="4">4</value>
+                    <value label="8">8</value>
+                    <value label="Halve beatloop size">half</value>
+                    <value label="Double beatloop size">double</value>
+                    <description>The bottom left second pad button.</description>
+                </option>
+                <option variable="beatLoopRollsSize7" type="enum" label="Seventh Pad">
+                    <value label="1/32">0.03125</value>
+                    <value label="1/16">0.0625</value>
+                    <value label="1/8">0.125</value>
+                    <value label="1/4">0.25</value>
+                    <value label="1/2">0.5</value>
+                    <value label="1">1</value>
+                    <value label="2">2</value>
+                    <value label="4">4</value>
+                    <value label="8">8</value>
+                    <value label="Halve beatloop size" default="true">half</value>
+                    <value label="Double beatloop size">double</value>
+                    <description>The bottom right second pad button.</description>
+                </option>
+                <option variable="beatLoopRollsSize8" type="enum" label="Eighth Pad">
+                    <value label="1/32">0.03125</value>
+                    <value label="1/16">0.0625</value>
+                    <value label="1/8">0.125</value>
+                    <value label="1/4">0.25</value>
+                    <value label="1/2">0.5</value>
+                    <value label="1">1</value>
+                    <value label="2">2</value>
+                    <value label="4">4</value>
+                    <value label="8">8</value>
+                    <value label="Halve beatloop size">half</value>
+                    <value label="Double beatloop size" default="true">double</value>
+                    <description>The bottom right pad button.</description>
+                </option>
+            </row>
+        </group>
+    </settings>
     <controller id="DDJ-REV1">
         <scriptfiles>
             <file filename="Pioneer-DDJ-REV1-script.js" functionprefix="PioneerDDJREV1"/>
