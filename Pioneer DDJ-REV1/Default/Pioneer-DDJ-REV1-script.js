@@ -353,13 +353,16 @@ PioneerDDJREV1.beatjumpSizeForPad = {
     0x27: 8   // PAD 8
 };
 
+
+//These values are set in the Controller settings UI. 
+// If JavaScript can't get the setting from the engine, then they default to the option on the right 
 PioneerDDJREV1.beatLoopRollSizes = [
-    engine.getSetting("beatLoopRollsSize1") || 1/8,
-    engine.getSetting("beatLoopRollsSize2") || 1/4,
-    engine.getSetting("beatLoopRollsSize3") || 1/2,
-    engine.getSetting("beatLoopRollsSize4") || 1,
-    engine.getSetting("beatLoopRollsSize5") || 2,
-    engine.getSetting("beatLoopRollsSize6") || 4,
+    engine.getSetting("beatLoopRollsSize1") || 1 / 16,
+    engine.getSetting("beatLoopRollsSize2") || 1 / 8,
+    engine.getSetting("beatLoopRollsSize3") || 1 / 4,
+    engine.getSetting("beatLoopRollsSize4") || 1 / 2,
+    engine.getSetting("beatLoopRollsSize5") || 1,
+    engine.getSetting("beatLoopRollsSize6") || 2,
     engine.getSetting("beatLoopRollsSize7") || "half",
     engine.getSetting("beatLoopRollsSize8") || "double"
 ];
@@ -443,23 +446,23 @@ PioneerDDJREV1.init = function () {
 
     //Init Reset FX
     for (let i = 1; i <= 3; i++) {
-    engine.setValue("[EffectRack1_EffectUnit1_Effect" + i + "]", "enabled", 0);
-    midi.sendShortMsg(0x94, 0x70 + (i-1), 0x00);
-}
-for (let i = 1; i <= 3; i++) {
-    engine.setValue("[EffectRack1_EffectUnit2_Effect" + i + "]", "enabled", 0);
-    midi.sendShortMsg(0x95, 0x70 + (i-1), 0x00);
-}
+        engine.setValue("[EffectRack1_EffectUnit1_Effect" + i + "]", "enabled", 0);
+        midi.sendShortMsg(0x94, 0x70 + (i - 1), 0x00);
+    }
+    for (let i = 1; i <= 3; i++) {
+        engine.setValue("[EffectRack1_EffectUnit2_Effect" + i + "]", "enabled", 0);
+        midi.sendShortMsg(0x95, 0x70 + (i - 1), 0x00);
+    }
 
 
     // Effects connections
-for (let i = 1; i <= 3; i++) {
-    engine.makeConnection("[EffectRack1_EffectUnit1_Effect" + i + "]", "enabled", PioneerDDJREV1.fxUpdate);
-}
-for (let i = 1; i <= 3; i++) {
-    engine.makeConnection("[EffectRack1_EffectUnit2_Effect" + i + "]", "enabled", PioneerDDJREV1.fxUpdate);
-}
- 
+    for (let i = 1; i <= 3; i++) {
+        engine.makeConnection("[EffectRack1_EffectUnit1_Effect" + i + "]", "enabled", PioneerDDJREV1.fxUpdate);
+    }
+    for (let i = 1; i <= 3; i++) {
+        engine.makeConnection("[EffectRack1_EffectUnit2_Effect" + i + "]", "enabled", PioneerDDJREV1.fxUpdate);
+    }
+
 
 
     // query the controller for current control positions on startup
@@ -490,11 +493,11 @@ PioneerDDJREV1.vuMeterUpdate = function (value, group) {
     }
 };
 PioneerDDJREV1.fxUpdate = function (value, group) {
-  /*   // This prevents feedback loops when we're sending MIDI messages to update the controller
-    if (PioneerDDJREV1.controllerInControl) {
-        return;
-    } */
-    
+    /*   // This prevents feedback loops when we're sending MIDI messages to update the controller
+      if (PioneerDDJREV1.controllerInControl) {
+          return;
+      } */
+
     let newState = (value === 1);
     let midiValue = newState ? 0x7F : 0x00;
 
@@ -611,15 +614,26 @@ PioneerDDJREV1.loopToggle = function (_channel, control, value, _status, group) 
 /* -------------------------------------------------------------------------- */
 
 PioneerDDJREV1.beatLoopRoll = function (_channel, control, value, _status, group) {
-    if (value){
-        pad_offset = 0x50; // this way i don't have to do a switch case and can just parse the beatloop array
-        
-        engine.setParameter(group, "beatloop_size", PioneerDDJREV1.beatLoopRollSizes[(control - pad_offset)]);
+    pressedBeatLoopPad = control - 0x50; //  This gets the index using the control number and subtracting the starting control number.
+    //  This works because all channel's pads start with the same control number.
+    pressedBeatLoopRollSize = PioneerDDJREV1.beatLoopRollSizes[pressedBeatLoopPad];
+
+    if (pressedBeatLoopRollSize == "half") { // we don't check for value here to stop beat loop from disabling when we let go of halve buttons
+        if (value) {
+            engine.setValue(group, "beatloop_size", (engine.getValue(group, "beatloop_size") * 0.5));
+        }
+
+    } else if (pressedBeatLoopRollSize == "double") {
+        if (value) {
+            engine.setValue(group, "beatloop_size", (engine.getValue(group, "beatloop_size") * 2));
+        }
+    }
+    else if (value && !engine.getValue(group, "beatlooproll_activate")) { //incoming button was pressed and beatloop is active
+        engine.setParameter(group, "beatloop_size", PioneerDDJREV1.beatLoopRollSizes[pressedBeatLoopPad]);
         engine.setValue(group, "beatlooproll_activate", true);
-    } else {
+    } else { // if a button was released and it wasn't 
+
         engine.setValue(group, "beatlooproll_activate", false);
-        //turn off beatloop roll
-        //reset beat loop size?
     }
 };
 
@@ -638,27 +652,27 @@ PioneerDDJREV1.bufferButtonPress = function (fxGroup, buttonIndex, mixxxUnit) {
     if (!PioneerDDJREV1.buttonPressBuffer[fxGroup]) {
         PioneerDDJREV1.buttonPressBuffer[fxGroup] = [];
     }
-    
+
     // Add current button press to buffer
     PioneerDDJREV1.buttonPressBuffer[fxGroup].push(buttonIndex);
-    
+
     // Clear any existing timeout for this group
     if (PioneerDDJREV1.buttonTimeouts[fxGroup]) {
         engine.stopTimer(PioneerDDJREV1.buttonTimeouts[fxGroup]);
     }
-    
+
     // Set new timeout to process the buffered presses after 50ms
-    PioneerDDJREV1.buttonTimeouts[fxGroup] = engine.beginTimer(50, function() {
+    PioneerDDJREV1.buttonTimeouts[fxGroup] = engine.beginTimer(50, function () {
         PioneerDDJREV1.processBufferedPresses(fxGroup, mixxxUnit);
     }, true);
 };
 
 
-PioneerDDJREV1.processBufferedPresses = function(fxGroup, mixxxUnit) {
+PioneerDDJREV1.processBufferedPresses = function (fxGroup, mixxxUnit) {
     const presses = PioneerDDJREV1.buttonPressBuffer[fxGroup] || [];
     const pressedButtons = [...new Set(presses)]; // Remove duplicates
     const uniquePressCount = pressedButtons.length;
-    
+
     if (uniquePressCount === 1) {
         PioneerDDJREV1.handleSinglePress(fxGroup, pressedButtons[0], mixxxUnit);
     } else if (uniquePressCount === 2) {
@@ -666,7 +680,7 @@ PioneerDDJREV1.processBufferedPresses = function(fxGroup, mixxxUnit) {
     } else if (uniquePressCount >= 3) {
         PioneerDDJREV1.handleTriplePress(fxGroup, mixxxUnit);
     }
-    
+
     // Clear the buffer for this group
     PioneerDDJREV1.buttonPressBuffer[fxGroup] = [];
     delete PioneerDDJREV1.buttonTimeouts[fxGroup];
@@ -1039,7 +1053,7 @@ PioneerDDJREV1.loadSelectedTrack = function (_channel, _control, value, _status,
         const stemMuteGroup = `${stemMuteGroupPrefix}${i}]`;
 
         const note = baseNote + (4 - i); // Calculate MIDI note for each stem (assuming 4 stems)
-        
+
         if (stemCount >= i) { // Check if the current stem exists
             midi.sendShortMsg(0x97, note, 0x7F); // Note on
             //Sync Mixx Lights
@@ -1245,11 +1259,11 @@ PioneerDDJREV1.buttonStates = {
 PioneerDDJREV1.activeCount = 0;
 
 // FX button handler - processes button presses and maintains synchronization
-PioneerDDJREV1.FX = function (channel, control, value, status, group) {    
+PioneerDDJREV1.FX = function (channel, control, value, status, group) {
     // Determine the FX group based on channel (0x94 = channel 5, 0x95 = channel 6)
     var fxGroup = null;
     var mixxxUnit = null;
-    
+
     if (status === 0x94) { // Channel 5
         fxGroup = "FX1";
         mixxxUnit = "[EffectRack1_EffectUnit1]";
@@ -1286,9 +1300,9 @@ PioneerDDJREV1.FX = function (channel, control, value, status, group) {
 };
 
 // Enable only one effect, disable others in the same group
-PioneerDDJREV1.syncSingleEffect = function(fxGroup, activeButtonIndex, mixxxUnit) {
+PioneerDDJREV1.syncSingleEffect = function (fxGroup, activeButtonIndex, mixxxUnit) {
     const unitNumber = mixxxUnit.includes("Unit1") ? 1 : 2;
-    if (this.buttonStates[fxGroup][activeButtonIndex]){
+    if (this.buttonStates[fxGroup][activeButtonIndex]) {
         var effectGroup = "[EffectRack1_EffectUnit" + unitNumber + "_Effect" + (i + 1) + "]";
         engine.setValue(effectGroup, "enabled", 0);
         return;
@@ -1300,9 +1314,9 @@ PioneerDDJREV1.syncSingleEffect = function(fxGroup, activeButtonIndex, mixxxUnit
 };
 
 // Enable two effects based on controller's current state
-PioneerDDJREV1.syncDualEffects = function(fxGroup, mixxxUnit, buttonIndices) {
+PioneerDDJREV1.syncDualEffects = function (fxGroup, mixxxUnit, buttonIndices) {
     const unitNumber = mixxxUnit.includes("Unit1") ? 1 : 2;
-    
+
     for (var i = 0; i < 3; i++) {
         var effectGroup = "[EffectRack1_EffectUnit" + unitNumber + "_Effect" + (i + 1) + "]";
         // Enable only the buttons that were actually pressed
@@ -1311,9 +1325,9 @@ PioneerDDJREV1.syncDualEffects = function(fxGroup, mixxxUnit, buttonIndices) {
 };
 
 // Enable all three effects when controller reports all buttons active
-PioneerDDJREV1.syncAllEffects = function(mixxxUnit) {
+PioneerDDJREV1.syncAllEffects = function (mixxxUnit) {
     const unitNumber = mixxxUnit.includes("Unit1") ? 1 : 2;
-    
+
     for (var i = 0; i < 3; i++) {
         var effectGroup = "[EffectRack1_EffectUnit" + unitNumber + "_Effect" + (i + 1) + "]";
         engine.setValue(effectGroup, "enabled", 1);
@@ -1321,9 +1335,9 @@ PioneerDDJREV1.syncAllEffects = function(mixxxUnit) {
 };
 
 // Disable all effects when controller reports no buttons active
-PioneerDDJREV1.syncNoEffects = function(mixxxUnit) {
+PioneerDDJREV1.syncNoEffects = function (mixxxUnit) {
     const unitNumber = mixxxUnit.includes("Unit1") ? 1 : 2;
-    
+
     for (var i = 0; i < 3; i++) {
         var effectGroup = "[EffectRack1_EffectUnit" + unitNumber + "_Effect" + (i + 1) + "]";
         engine.setValue(effectGroup, "enabled", 0);
