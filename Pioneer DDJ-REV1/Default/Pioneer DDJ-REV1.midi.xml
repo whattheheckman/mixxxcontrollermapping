@@ -111,7 +111,7 @@
                     <value label="1/2">0.5</value>
                     <value label="1">1</value>
                     <value label="2">2</value>
-                    <value label="4">4</value>
+                    <value label="4" default="true">4</value>
                     <value label="8">8</value>
                     <description>The bottom right second pad button.</description>
                 </option>
@@ -124,7 +124,7 @@
                     <value label="1">1</value>
                     <value label="2">2</value>
                     <value label="4">4</value>
-                    <value label="8">8</value>
+                    <value label="8" default="true">8</value>
                     <description>The bottom right pad button.</description>
                 </option>
             </row>
