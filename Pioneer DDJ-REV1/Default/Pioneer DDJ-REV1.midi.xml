@@ -1868,7 +1868,7 @@
             <control>
                 <group>[Channel1]</group>
                 <key>PioneerDDJREV1.samplerVolume</key>
-                <description>SAMPLER GAIN(Volume) (DECK1) -  press SAMPLER + rotate LVL/DEPTH</description>
+                <description>SAMPLER GAIN(Volume) (DECK1) - press SAMPLER + rotate LVL/DEPTH</description>
                 <status>0x90</status>
                 <midino>0x22</midino>
                 <options>
@@ -1878,7 +1878,7 @@
             <control>
                 <group>[Channel2]</group>
                 <key>PioneerDDJREV1.samplerVolume</key>
-                <description>SAMPLER GAIN(Volume) (DECK2) -  press SAMPLER + rotate LVL/DEPTH</description>
+                <description>SAMPLER GAIN(Volume) (DECK2) - press SAMPLER + rotate LVL/DEPTH</description>
                 <status>0x91</status>
                 <midino>0x22</midino>
                 <options>
@@ -1888,7 +1888,7 @@
             <control>
                 <group>[Channel3]</group>
                 <key>PioneerDDJREV1.samplerVolume</key>
-                <description>SAMPLER GAIN(Volume) (DECK3) -  press SAMPLER + rotate LVL/DEPTH</description>
+                <description>SAMPLER GAIN(Volume) (DECK3) - press SAMPLER + rotate LVL/DEPTH</description>
                 <status>0x92</status>
                 <midino>0x22</midino>
                 <options>
@@ -1898,7 +1898,7 @@
             <control>
                 <group>[Channel4]</group>
                 <key>PioneerDDJREV1.samplerVolume</key>
-                <description>SAMPLER GAIN(Volume) (DECK4) -  press SAMPLER + rotate LVL/DEPTH</description>
+                <description>SAMPLER GAIN(Volume) (DECK4) - press SAMPLER + rotate LVL/DEPTH</description>
                 <status>0x93</status>
                 <midino>0x22</midino>
                 <options>
@@ -2571,7 +2571,7 @@
             </control>
             <control>
                 <group>[Sampler13]</group>
-                <key>PioneerDDJREV1.loadScratchToDeck  </key>
+                <key>PioneerDDJREV1.loadScratchToDeck </key>
                 <description>SCRATCH BANK - PAD 5 (RIGHT) - press - Load Sample 13 (Deck 2)</description>
                 <status>0x99</status>
                 <midino>0x34</midino>
@@ -2581,7 +2581,7 @@
             </control>
             <control>
                 <group>[Sampler9]</group>
-                <key>PioneerDDJREV1.loadScratchToDeck  </key>
+                <key>PioneerDDJREV1.loadScratchToDeck </key>
                 <description>SCRATCH BANK - PAD 5 (LEFT) - press - Load Sample 9 (Deck 3)</description>
                 <status>0x9B</status>
                 <midino>0x34</midino>
@@ -2591,7 +2591,7 @@
             </control>
             <control>
                 <group>[Channel3]</group>
-                <key>PioneerDDJREV1.loadScratchToDeck  </key>
+                <key>PioneerDDJREV1.loadScratchToDeck </key>
                 <description>SCRATCH BANK - PAD 5 (RIGHT) - press - Load Sample 13 (Deck 4)</description>
                 <status>0x9D</status>
                 <midino>0x34</midino>
@@ -2601,7 +2601,7 @@
             </control>
             <control>
                 <group>[Sampler10]</group>
-                <key>PioneerDDJREV1.loadScratchToDeck  </key>
+                <key>PioneerDDJREV1.loadScratchToDeck </key>
                 <description>SCRATCH BANK - PAD 6 (LEFT) - press - Load Sample 10 (Deck 1)</description>
                 <status>0x97</status>
                 <midino>0x35</midino>
@@ -2611,7 +2611,7 @@
             </control>
             <control>
                 <group>[Channel2]</group>
-                <key>PioneerDDJREV1.loadScratchToDeck  </key>
+                <key>PioneerDDJREV1.loadScratchToDeck </key>
                 <description>SCRATCH BANK - PAD 6 (RIGHT) - press - Load Sample 14 (Deck 2)</description>
                 <status>0x99</status>
                 <midino>0x35</midino>
@@ -2621,7 +2621,7 @@
             </control>
             <control>
                 <group>[Channel3]</group>
-                <key>PioneerDDJREV1.loadScratchToDeck  </key>
+                <key>PioneerDDJREV1.loadScratchToDeck </key>
                 <description>SCRATCH BANK - PAD 6 (LEFT) - press - Load Sample 10 (Deck 3)</description>
                 <status>0x9B</status>
                 <midino>0x35</midino>
@@ -2631,7 +2631,7 @@
             </control>
             <control>
                 <group>[Channel4]</group>
-                <key>PioneerDDJREV1.loadScratchToDeck  </key>
+                <key>PioneerDDJREV1.loadScratchToDeck </key>
                 <description>SCRATCH BANK - PAD 6 (RIGHT) - press - Load Sample 14 (Deck 4)</description>
                 <status>0x9D</status>
                 <midino>0x35</midino>
@@ -2685,7 +2685,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>PioneerDDJREV1.loadScratchToDeck  </key>
+                <key>PioneerDDJREV1.loadScratchToDeck </key>
                 <description>SCRATCH BANK - PAD 7 (LEFT) - press - Load Sample 11 (Deck 1)</description>
                 <status>0x97</status>
                 <midino>0x36</midino>
@@ -2695,7 +2695,7 @@
             </control>
             <control>
                 <group>[Channel2]</group>
-                <key>PioneerDDJREV1.loadScratchToDeck  </key>
+                <key>PioneerDDJREV1.loadScratchToDeck </key>
                 <description>SCRATCH BANK - PAD 7 (RIGHT) - press - Load Sample 15 (Deck 2)</description>
                 <status>0x99</status>
                 <midino>0x36</midino>
@@ -2705,7 +2705,7 @@
             </control>
             <control>
                 <group>[Channel3]</group>
-                <key>PioneerDDJREV1.loadScratchToDeck  </key>
+                <key>PioneerDDJREV1.loadScratchToDeck </key>
                 <description>SCRATCH BANK - PAD 7 (LEFT) - press - Load Sample 11 (Deck 3)</description>
                 <status>0x9B</status>
                 <midino>0x36</midino>
@@ -2715,7 +2715,7 @@
             </control>
             <control>
                 <group>[Channel3]</group>
-                <key>PioneerDDJREV1.loadScratchToDeck  </key>
+                <key>PioneerDDJREV1.loadScratchToDeck </key>
                 <description>SCRATCH BANK - PAD 7 (RIGHT) - press - Load Sample 15 (Deck 4)</description>
                 <status>0x9D</status>
                 <midino>0x36</midino>
@@ -2725,7 +2725,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>PioneerDDJREV1.loadScratchToDeck  </key>
+                <key>PioneerDDJREV1.loadScratchToDeck </key>
                 <description>SCRATCH BANK - PAD 8 (LEFT) - press - Load Sample 12 (Deck 1)</description>
                 <status>0x97</status>
                 <midino>0x37</midino>
@@ -2735,7 +2735,7 @@
             </control>
             <control>
                 <group>[Channel2]</group>
-                <key>PioneerDDJREV1.loadScratchToDeck  </key>
+                <key>PioneerDDJREV1.loadScratchToDeck </key>
                 <description>SCRATCH BANK - PAD 8 (RIGHT) - press - Load Sample 16 (Deck 2)</description>
                 <status>0x99</status>
                 <midino>0x37</midino>
@@ -2745,7 +2745,7 @@
             </control>
             <control>
                 <group>[Channel3]</group>
-                <key>PioneerDDJREV1.loadScratchToDeck  </key>
+                <key>PioneerDDJREV1.loadScratchToDeck </key>
                 <description>SCRATCH BANK - PAD 8 (LEFT) - press - Load Sample 12 (Deck 3)</description>
                 <status>0x9B</status>
                 <midino>0x37</midino>
@@ -2755,7 +2755,7 @@
             </control>
             <control>
                 <group>[Channel3]</group>
-                <key>PioneerDDJREV1.loadScratchToDeck  </key>
+                <key>PioneerDDJREV1.loadScratchToDeck </key>
                 <description>SCRATCH BANK - PAD 8 (RIGHT) - press - Load Sample 16 (Deck 4)</description>
                 <status>0x9D</status>
                 <midino>0x37</midino>
@@ -2856,12 +2856,12 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>beatjump_backward</key>
+                <key>PioneerDDJREV1.beatJump</key>
                 <description>BEAT JUMP BACKWARD (DECK1) - press - Jump backward by current size</description>
                 <status>0x97</status>
                 <midino>0x40</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -2876,17 +2876,17 @@
             </control>
             <control>
                 <group>[Channel3]</group>
-                <key>beatjump_backward</key>
+                <key>PioneerDDJREV1.beatJump</key>
                 <description>BEAT JUMP BACKWARD (DECK3) - press - Jump backward by current size</description>
                 <status>0x9B</status>
                 <midino>0x40</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
                 <group>[Channel4]</group>
-                <key>beatjump_backward</key>
+                <key>PioneerDDJREV1.beatJump</key>
                 <description>BEAT JUMP BACKWARD (DECK4) - press - Jump backward by current size</description>
                 <status>0x9D</status>
                 <midino>0x40</midino>
@@ -2896,37 +2896,37 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>beatjump_forward</key>
+                <key>PioneerDDJREV1.beatJump</key>
                 <description>BEAT JUMP FORWARD (DECK1) - press - Jump forward by current size</description>
                 <status>0x97</status>
                 <midino>0x41</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
                 <group>[Channel2]</group>
-                <key>beatjump_forward</key>
+                <key>PioneerDDJREV1.beatJump</key>
                 <description>BEAT JUMP FORWARD (DECK2) - press - Jump forward by current size</description>
                 <status>0x99</status>
                 <midino>0x41</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
                 <group>[Channel3]</group>
-                <key>beatjump_forward</key>
+                <key>PioneerDDJREV1.beatJump</key>
                 <description>BEAT JUMP FORWARD (DECK3) - press - Jump forward by current size</description>
                 <status>0x9B</status>
                 <midino>0x41</midino>
                 <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
                 <group>[Channel4]</group>
-                <key>beatjump_forward</key>
+                <key>PioneerDDJREV1.beatJump</key>
                 <description>BEAT JUMP FORWARD (DECK4) - press - Jump forward by current size</description>
                 <status>0x9D</status>
                 <midino>0x41</midino>
@@ -2936,7 +2936,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>beatjump_size_halve</key>
+                <key>PioneerDDJREV1.beatJump</key>
                 <description>BEAT JUMP SIZE DOWN (DECK1) - Halve the beatjump size</description>
                 <status>0x97</status>
                 <midino>0x42</midino>
@@ -2946,7 +2946,7 @@
             </control>
             <control>
                 <group>[Channel2]</group>
-                <key>beatjump_size_halve</key>
+                <key>PioneerDDJREV1.beatJump</key>
                 <description>BEAT JUMP SIZE DOWN (DECK2) - Halve the beatjump size</description>
                 <status>0x99</status>
                 <midino>0x42</midino>
@@ -2956,7 +2956,7 @@
             </control>
             <control>
                 <group>[Channel3]</group>
-                <key>beatjump_size_halve</key>
+                <key>PioneerDDJREV1.beatJump</key>
                 <description>BEAT JUMP SIZE DOWN (DECK3) - Halve the beatjump size</description>
                 <status>0x9B</status>
                 <midino>0x42</midino>
@@ -2966,7 +2966,7 @@
             </control>
             <control>
                 <group>[Channel4]</group>
-                <key>beatjump_size_halve</key>
+                <key>PioneerDDJREV1.beatJump</key>
                 <description>BEAT JUMP SIZE DOWN (DECK4) - Halve the beatjump size</description>
                 <status>0x9D</status>
                 <midino>0x42</midino>
@@ -2976,7 +2976,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>beatjump_size_double</key>
+                <key>PioneerDDJREV1.beatJump</key>
                 <description>BEAT JUMP SIZE UP (DECK1) - Double the beatjump size</description>
                 <status>0x97</status>
                 <midino>0x43</midino>
@@ -2986,7 +2986,7 @@
             </control>
             <control>
                 <group>[Channel2]</group>
-                <key>beatjump_size_double</key>
+                <key>PioneerDDJREV1.beatJump</key>
                 <description>BEAT JUMP SIZE UP (DECK2) - Double the beatjump size</description>
                 <status>0x99</status>
                 <midino>0x43</midino>
@@ -2996,7 +2996,7 @@
             </control>
             <control>
                 <group>[Channel3]</group>
-                <key>beatjump_size_double</key>
+                <key>PioneerDDJREV1.beatJump</key>
                 <description>BEAT JUMP SIZE UP (DECK3) - Double the beatjump size</description>
                 <status>0x9B</status>
                 <midino>0x43</midino>
@@ -3006,12 +3006,175 @@
             </control>
             <control>
                 <group>[Channel4]</group>
-                <key>beatjump_size_double</key>
+                <key>PioneerDDJREV1.beatJump</key>
                 <description>BEAT JUMP SIZE UP (DECK4) - Double the beatjump size</description>
                 <status>0x9D</status>
                 <midino>0x43</midino>
                 <options>
                     <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>PioneerDDJREV1.beatJump</key>
+                <description>BEAT JUMP 4 (DECK1) - press - Jump by 4 beats</description>
+                <status>0x97</status>
+                <midino>0x44</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>PioneerDDJREV1.beatJump</key>
+                <description>BEAT JUMP 4 (DECK2) - press - Jump by 4 beats</description>
+                <status>0x99</status>
+                <midino>0x44</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>PioneerDDJREV1.beatJump</key>
+                <description>BEAT JUMP 4 (DECK3) - press - Jump by 4 beats</description>
+                <status>0x9B</status>
+                <midino>0x44</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>PioneerDDJREV1.beatJump</key>
+                <description>BEAT JUMP 4 (DECK4) - press - Jump by 4 beats</description>
+                <status>0x9D</status>
+                <midino>0x44</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+
+            <control>
+                <group>[Channel1]</group>
+                <key>PioneerDDJREV1.beatJump</key>
+                <description>BEAT JUMP 8 (DECK1) - press - Jump by 8 beats</description>
+                <status>0x97</status>
+                <midino>0x45</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>PioneerDDJREV1.beatJump</key>
+                <description>BEAT JUMP 8 (DECK2) - press - Jump by 8 beats</description>
+                <status>0x99</status>
+                <midino>0x45</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>PioneerDDJREV1.beatJump</key>
+                <description>BEAT JUMP 8 (DECK3) - press - Jump by 8 beats</description>
+                <status>0x9B</status>
+                <midino>0x45</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>PioneerDDJREV1.beatJump</key>
+                <description>BEAT JUMP 8 (DECK4) - press - Jump by 8 beats</description>
+                <status>0x9D</status>
+                <midino>0x45</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+
+            <control>
+                <group>[Channel1]</group>
+                <key>PioneerDDJREV1.beatJump</key>
+                <description>BEAT JUMP 16 (DECK1) - press - Jump by 16 beats</description>
+                <status>0x97</status>
+                <midino>0x46</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>PioneerDDJREV1.beatJump</key>
+                <description>BEAT JUMP 16 (DECK2) - press - Jump by 16 beats</description>
+                <status>0x99</status>
+                <midino>0x46</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>PioneerDDJREV1.beatJump</key>
+                <description>BEAT JUMP 16 (DECK3) - press - Jump by 16 beats</description>
+                <status>0x9B</status>
+                <midino>0x46</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>PioneerDDJREV1.beatJump</key>
+                <description>BEAT JUMP 16 (DECK4) - press - Jump by 16 beats</description>
+                <status>0x9D</status>
+                <midino>0x46</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+
+            <control>
+                <group>[Channel1]</group>
+                <key>PioneerDDJREV1.beatJump</key>
+                <description>BEAT JUMP 32 (DECK1) - press - Jump by 32 beats</description>
+                <status>0x97</status>
+                <midino>0x47</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>PioneerDDJREV1.beatJump</key>
+                <description>BEAT JUMP 32 (DECK2) - press - Jump by 32 beats</description>
+                <status>0x99</status>
+                <midino>0x47</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>PioneerDDJREV1.beatJump</key>
+                <description>BEAT JUMP 32 (DECK3) - press - Jump by 32 beats</description>
+                <status>0x9B</status>
+                <midino>0x47</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>PioneerDDJREV1.beatJump</key>
+                <description>BEAT JUMP 32 (DECK4) - press - Jump by 32 beats</description>
+                <status>0x9D</status>
+                <midino>0x47</midino>
+                <options>
+                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -3279,7 +3442,7 @@
                     <script-binding/>
                 </options>
             </control>
-            
+
             <control>
                 <group>[Channel1]</group>
                 <key>PioneerDDJREV1.beatLoopRoll</key>
@@ -3320,7 +3483,7 @@
                     <script-binding/>
                 </options>
             </control>
-            
+
             <control>
                 <group>[Channel1]</group>
                 <key>PioneerDDJREV1.beatLoopRoll</key>
