@@ -342,16 +342,17 @@ PioneerDDJREV1.loopAdjustOut = [false, false];
 PioneerDDJREV1.loopAdjustMultiply = 10;
 
 // Beatjump pad (beatjump_size values)
-PioneerDDJREV1.beatjumpSizeForPad = {
-    0x20: -1, // PAD 1
-    0x21: 1,  // PAD 2
-    0x22: -2, // PAD 3
-    0x23: 2,  // PAD 4
-    0x24: -4, // PAD 5
-    0x25: 4,  // PAD 6
-    0x26: -8, // PAD 7
-    0x27: 8   // PAD 8
-};
+PioneerDDJREV1.beatJumpActions = [
+    "beatjump_forward",
+    "beatjump_size_halve",
+    "beatjump_size_double",
+    "beatjump_backward",
+    "start", // in Serato, this goes to the previous track after tapping once
+    // there's no command in mixxx to actually go to the previous track atm.
+    "back", // fast rewind
+    "fwd", // fast forward, might need to 
+    "reverseroll" // censor
+];
 
 
 //These values are set in the Controller settings UI. 
@@ -363,8 +364,8 @@ PioneerDDJREV1.beatLoopRollSizes = [
     engine.getSetting("beatLoopRollsSize4") || 1 / 2,
     engine.getSetting("beatLoopRollsSize5") || 1,
     engine.getSetting("beatLoopRollsSize6") || 2,
-    engine.getSetting("beatLoopRollsSize7") || "half",
-    engine.getSetting("beatLoopRollsSize8") || "double"
+    engine.getSetting("beatLoopRollsSize7") || 4,
+    engine.getSetting("beatLoopRollsSize8") || 8
 ];
 
 PioneerDDJREV1.beatLoopPadStates = [false, false, false, false, false, false, false, false];
@@ -621,7 +622,7 @@ PioneerDDJREV1.beatLoopRoll = function (_channel, control, value, _status, group
     //  This works because all channel's pads start with the same control number.
     pressedBeatLoopRollSize = PioneerDDJREV1.beatLoopRollSizes[pressedBeatLoopPad];
 
-    if (value){
+    if (value) {
         PioneerDDJREV1.beatLoopPadStates[pressedBeatLoopPad] = true;
     } else {
         PioneerDDJREV1.beatLoopPadStates[pressedBeatLoopPad] = false;
@@ -630,13 +631,13 @@ PioneerDDJREV1.beatLoopRoll = function (_channel, control, value, _status, group
     if (value && !engine.getValue(group, "beatlooproll_activate")) { //incoming button was pressed and beatloop is active
         engine.setParameter(group, "beatloop_size", pressedBeatLoopRollSize);
         engine.setValue(group, "beatlooproll_activate", true);
-    } else if(value) {// a button is pressed but we are already doing a beat roll
+    } else if (value) {// a button is pressed but we are already doing a beat roll
         engine.setValue(group, "beatloop_size", pressedBeatLoopRollSize); // change the size
     } else if (!value) {// finds first beatloop pad still being pressed
         stillPressedIndex = PioneerDDJREV1.beatLoopPadStates.findIndex(val => val === true);
-        engine.setValue(group, "beatloop_size",PioneerDDJREV1.beatLoopRollSizes[stillPressedIndex]);
+        engine.setValue(group, "beatloop_size", PioneerDDJREV1.beatLoopRollSizes[stillPressedIndex]);
     }
-    if (!value && (PioneerDDJREV1.beatLoopPadStates.every(val => val === false))){ 
+    if (!value && (PioneerDDJREV1.beatLoopPadStates.every(val => val === false))) {
         // if a button was released and it's the same as the current beat roll
         engine.setValue(group, "beatlooproll_activate", false); // turn off beat roll
     }
@@ -649,25 +650,8 @@ PioneerDDJREV1.beatLoopRoll = function (_channel, control, value, _status, group
 PioneerDDJREV1.beatJump = function (_channel, control, value, _status, group) {
     pressedBeatJumpPad = control - 0x40; //  This gets the index using the control number and subtracting the starting control number.
     //  This works because all channel's pads start with the same control number.
-    pressedBeatJumpActionSize = PioneerDDJREV1.beatJumpActions[pressedBeatLoopPad];
-
-    if (pressedBeatJumpActionSize == "half") { // we don't check for value here to stop beat loop from disabling when we let go of halve buttons
-        if (value) {
-            engine.setValue(group, "beatloop_size", (engine.getValue(group, "beatloop_size") * 0.5));
-        }
-
-    } else if (pressedBeatJumpActionSize == "double") {
-        if (value) {
-            engine.setValue(group, "beatloop_size", (engine.getValue(group, "beatloop_size") * 2));
-        }
-    }
-    else if (value && !engine.getValue(group, "beatlooproll_activate")) { //incoming button was pressed and beatloop is active
-        engine.setParameter(group, "beatloop_size", PioneerDDJREV1.beatLoopRollSizes[pressedBeatLoopPad]);
-        engine.setValue(group, "beatlooproll_activate", true);
-    } else { // if a button was released and it wasn't 
-
-        engine.setValue(group, "beatlooproll_activate", false);
-    }
+    pressedBeatJumpAction = PioneerDDJREV1.beatJumpActions[pressedBeatJumpPad];    
+    engine.setValue(group, pressedBeatJumpAction, value);
 };
 
 
@@ -922,43 +906,6 @@ PioneerDDJREV1.tempoSliderLSB = function (_channel, _control, value, _status, gr
     );
 };
 
-//
-// Beat Jump mode
-//
-// Note that when we increase/decrease the sizes on the pad buttons, we use the
-// value of the first pad (0x21) as an upper/lower limit beyond which we don't
-// allow further increasing/decreasing of all the values.
-//
-
-PioneerDDJREV1.beatjumpPadPressed = function (_channel, control, value, _status, group) {
-    if (value === 0) {
-        return;
-    }
-    engine.setValue(group, "beatjump_size", Math.abs(PioneerDDJREV1.beatjumpSizeForPad[control]));
-    engine.setValue(group, "beatjump", PioneerDDJREV1.beatjumpSizeForPad[control]);
-};
-
-
-PioneerDDJREV1.increaseBeatjumpSizes = function (_channel, control, value, _status, group) {
-    if (value === 0 || PioneerDDJREV1.beatjumpSizeForPad[0x21] * 16 > 16) {
-        return;
-    }
-    Object.keys(PioneerDDJREV1.beatjumpSizeForPad).forEach(function (pad) {
-        PioneerDDJREV1.beatjumpSizeForPad[pad] = PioneerDDJREV1.beatjumpSizeForPad[pad] * 16;
-    });
-    engine.setValue(group, "beatjump_size", PioneerDDJREV1.beatjumpSizeForPad[0x21]);
-};
-
-
-PioneerDDJREV1.decreaseBeatjumpSizes = function (_channel, control, value, _status, group) {
-    if (value === 0 || PioneerDDJREV1.beatjumpSizeForPad[0x21] / 16 < 1 / 16) {
-        return;
-    }
-    Object.keys(PioneerDDJREV1.beatjumpSizeForPad).forEach(function (pad) {
-        PioneerDDJREV1.beatjumpSizeForPad[pad] = PioneerDDJREV1.beatjumpSizeForPad[pad] / 16;
-    });
-    engine.setValue(group, "beatjump_size", PioneerDDJREV1.beatjumpSizeForPad[0x21]);
-};
 
 //
 // Sampler mode
