@@ -633,14 +633,17 @@ PioneerDDJREV1.beatLoopRoll = function (_channel, control, value, _status, group
         engine.setValue(group, "beatlooproll_activate", true);
     } else if (value) {// a button is pressed but we are already doing a beat roll
         engine.setValue(group, "beatloop_size", pressedBeatLoopRollSize); // change the size
-    } else if (!value) {// finds first beatloop pad still being pressed
+    } else if (!value) {// we try to a beatloop pad still being pressed
         stillPressedIndex = PioneerDDJREV1.beatLoopPadStates.findIndex(val => val === true);
-        engine.setValue(group, "beatloop_size", PioneerDDJREV1.beatLoopRollSizes[stillPressedIndex]);
+        if (stillPressedIndex > 0) { //returns -1 if no index found
+            stillPressedIndex = PioneerDDJREV1.beatLoopPadStates.findIndex(val => val === true);
+            engine.setValue(group, "beatloop_size", PioneerDDJREV1.beatLoopRollSizes[stillPressedIndex]);
+        } else {
+            // no index found so we stop the roll
+            engine.setValue(group, "beatlooproll_activate", false); // turn off beat roll
+        }
     }
-    if (!value && (PioneerDDJREV1.beatLoopPadStates.every(val => val === false))) {
-        // if a button was released and it's the same as the current beat roll
-        engine.setValue(group, "beatlooproll_activate", false); // turn off beat roll
-    }
+
 };
 
 /* -------------------------------------------------------------------------- */
@@ -653,6 +656,7 @@ PioneerDDJREV1.beatJump = function (_channel, control, value, _status, group) {
     //  This works because all channel's pads start with the same control number.
     pressedBeatJumpAction = PioneerDDJREV1.beatJumpActions[pressedBeatJumpPad];    
     engine.setValue(group, pressedBeatJumpAction, value);
+    engine.setParameter(group, pressedBeatJumpAction, value);
 };
 
 
