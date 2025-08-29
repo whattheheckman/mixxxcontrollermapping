@@ -343,10 +343,10 @@ PioneerDDJREV1.loopAdjustMultiply = 10;
 
 // Beatjump pad (beatjump_size values)
 PioneerDDJREV1.beatJumpActions = [
-    "beatjump_forward",
+    "beatjump_backward",
     "beatjump_size_halve",
     "beatjump_size_double",
-    "beatjump_backward",
+    "beatjump_forward",
     "start", // in Serato, this goes to the previous track after tapping once
     // there's no command in mixxx to actually go to the previous track atm.
     "back", // fast rewind
@@ -648,9 +648,11 @@ PioneerDDJREV1.beatLoopRoll = function (_channel, control, value, _status, group
 /* -------------------------------------------------------------------------- */
 
 PioneerDDJREV1.beatJump = function (_channel, control, value, _status, group) {
+    
     pressedBeatJumpPad = control - 0x40; //  This gets the index using the control number and subtracting the starting control number.
     //  This works because all channel's pads start with the same control number.
     pressedBeatJumpAction = PioneerDDJREV1.beatJumpActions[pressedBeatJumpPad];    
+    console.log("Control pressed:" + control + "  pressedBeatJumpPad: " + pressedBeatJumpPad + "   pressedBeatJumpAction: "+ pre);
     engine.setValue(group, pressedBeatJumpAction, value);
 };
 
