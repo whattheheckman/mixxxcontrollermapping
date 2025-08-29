@@ -2824,6 +2824,37 @@
                 </options>
             </control>
             <control>
+                <group>[Library]</group>
+                <key>PioneerDDJREV1.selector</key>
+                <description>BROWSE - rotate - Scroll up/down through tracks in library</description>
+                <status>0xB6</status>
+                <midino>0x40</midino>
+                <options>
+                    <selectknob/>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Library]</group>
+                <key>MoveFocusForward</key>
+                <description>BROWSE - press - Toggle focus between sidebar and tracklist</description>
+                <status>0x96</status>
+                <midino>0x41</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Library]</group>
+                <key>MoveFocusBackward</key>
+                <description>BACK - press - Move backward or up one level in sidebar</description>
+                <status>0x96</status>
+                <midino>0x42</midino>
+                <options>
+                    <button/>
+                </options>
+            </control>
+            <control>
                 <group>[Channel1]</group>
                 <key>beatjump_backward</key>
                 <description>BEAT JUMP BACKWARD (DECK1) - press - Jump backward by current size</description>
@@ -2859,27 +2890,6 @@
                 <description>BEAT JUMP BACKWARD (DECK4) - press - Jump backward by current size</description>
                 <status>0x9D</status>
                 <midino>0x40</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Library]</group>
-                <key>PioneerDDJREV1.selector</key>
-                <description>BROWSE - rotate - Scroll up/down through tracks in library</description>
-                <status>0xB6</status>
-                <midino>0x40</midino>
-                <options>
-                    <selectknob/>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Library]</group>
-                <key>MoveFocusForward</key>
-                <description>BROWSE - press - Toggle focus between sidebar and tracklist</description>
-                <status>0x96</status>
-                <midino>0x41</midino>
                 <options>
                     <normal/>
                 </options>
@@ -2922,16 +2932,6 @@
                 <midino>0x41</midino>
                 <options>
                     <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Library]</group>
-                <key>MoveFocusBackward</key>
-                <description>BACK - press - Move backward or up one level in sidebar</description>
-                <status>0x96</status>
-                <midino>0x42</midino>
-                <options>
-                    <button/>
                 </options>
             </control>
             <control>
