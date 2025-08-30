@@ -647,11 +647,12 @@ PioneerDDJREV1.beatLoopRoll = function (_channel, control, value, _status, group
 /*                                  Beat jump                                 */
 /* -------------------------------------------------------------------------- */
 
-PioneerDDJREV1.beatJump = function (_channel, control, value, _status, group) {
+PioneerDDJREV1.beatJump = function (_channel, control, value, status, group) {
     
     pressedBeatJumpPad = control - 0x40; //  This gets the index using the control number and subtracting the starting control number.
     //  This works because all channel's pads start with the same control number.
-    pressedBeatJumpAction = PioneerDDJREV1.beatJumpActions[pressedBeatJumpPad];  
+    pressedBeatJumpAction = PioneerDDJREV1.beatJumpActions[pressedBeatJumpPad];
+    midi.sendShortMsg(status, control, value);
     engine.setValue(group, pressedBeatJumpAction, value);
 };
 
