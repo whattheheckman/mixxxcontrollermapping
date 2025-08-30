@@ -636,7 +636,6 @@ PioneerDDJREV1.beatLoopRoll = function (_channel, control, value, _status, group
     } else if (!value) {// we try to a beatloop pad still being pressed
         stillPressedIndex = PioneerDDJREV1.beatLoopPadStates.findIndex(val => val === true);
         if (stillPressedIndex > 0) { //returns -1 if no index found
-            stillPressedIndex = PioneerDDJREV1.beatLoopPadStates.findIndex(val => val === true);
             engine.setValue(group, "beatloop_size", PioneerDDJREV1.beatLoopRollSizes[stillPressedIndex]);
         } else {
             // no index found so we stop the roll
@@ -651,12 +650,13 @@ PioneerDDJREV1.beatLoopRoll = function (_channel, control, value, _status, group
 /* -------------------------------------------------------------------------- */
 
 PioneerDDJREV1.beatJump = function (_channel, control, value, _status, group) {
-    
+    mappedValue = (value > 1) ? 1 : 0;
     pressedBeatJumpPad = control - 0x40; //  This gets the index using the control number and subtracting the starting control number.
     //  This works because all channel's pads start with the same control number.
     pressedBeatJumpAction = PioneerDDJREV1.beatJumpActions[pressedBeatJumpPad];    
-    engine.setValue(group, pressedBeatJumpAction, value);
-    engine.setParameter(group, pressedBeatJumpAction, value);
+    console.debug("beat jummp called once for: " + pressedBeatJumpAction + " mappedVALUE: " + mappedValue);
+    engine.setValue(group, pressedBeatJumpAction, mappedValue);
+    engine.setParameter(group, pressedBeatJumpAction, mappedValue);
 };
 
 
