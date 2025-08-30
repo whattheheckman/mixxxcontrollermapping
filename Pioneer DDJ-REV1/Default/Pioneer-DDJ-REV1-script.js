@@ -370,8 +370,6 @@ PioneerDDJREV1.beatLoopRollSizes = [
 
 PioneerDDJREV1.beatLoopPadStates = [false, false, false, false, false, false, false, false];
 
-PioneerDDJREV1.quickJumpSize = 32;
-
 
 PioneerDDJREV1.shiftPressed = false;
 PioneerDDJREV1.syncButtonPressed = false;
@@ -653,7 +651,7 @@ PioneerDDJREV1.beatJump = function (_channel, control, value, _status, group) {
     
     pressedBeatJumpPad = control - 0x40; //  This gets the index using the control number and subtracting the starting control number.
     //  This works because all channel's pads start with the same control number.
-    pressedBeatJumpAction = PioneerDDJREV1.beatJumpActions[pressedBeatJumpPad];    
+    pressedBeatJumpAction = PioneerDDJREV1.beatJumpActions[pressedBeatJumpPad];  
     engine.setValue(group, pressedBeatJumpAction, value);
 };
 
@@ -1008,17 +1006,6 @@ PioneerDDJREV1.toggleQuantize = function (_channel, _control, value, _status, gr
     }
 };
 
-PioneerDDJREV1.quickJumpForward = function (_channel, _control, value, _status, group) {
-    if (value) {
-        engine.setValue(group, "beatjump", PioneerDDJREV1.quickJumpSize);
-    }
-};
-
-PioneerDDJREV1.quickJumpBack = function (_channel, _control, value, _status, group) {
-    if (value) {
-        engine.setValue(group, "beatjump", -PioneerDDJREV1.quickJumpSize);
-    }
-};
 
 //Load Selected Track and Sync Stem Lights 
 PioneerDDJREV1.loadSelectedTrack = function (_channel, _control, value, _status, group) {
